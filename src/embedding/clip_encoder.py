@@ -5,14 +5,14 @@ from PIL import Image
 
 #deciding whether to use CPU or GPU 
 
-device = "cuda" if torch.cude.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Load CLIP model 
 
 model, preprocess = clip.load("ViT-B/32", device=device)  #Loads the vision transformer and outputs a 512-dimensional vector that represents what is in the image(not pixels but meaning)
 model.eval() #set model to evaluation mode
 
-def encode_image(image_path: str) -> np.ndarray:  #converts image into normalized clip embedding, returns a 512-d normalized vector representation of image
+def get_embedding(image_path: str) -> np.ndarray:  #converts image into normalized clip embedding, returns a 512-d normalized vector representation of image
     image = Image.open(image_path).convert("RGB") #Load image from disk and convert it to RGB format
 
     #Apply CLIP's preprocessing: Resize, Center crop, Normalize pixel values
