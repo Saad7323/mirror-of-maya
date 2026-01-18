@@ -30,16 +30,16 @@ def find_optimal_threshold(similarity_scores, true_labels, step=0.01):
     best_threshold = 0.0
     best_f1 = 0.0
     
-    thresholds_to_try = np.arange(0.0, 1.0 + step, step)
+    thresholds_to_try = np.arange(0.5, 0.95 + step, step)#0.5 to 0.95 as thats where the cosine similarity values become meaningful for CLIP embeddings.
     
     for threshold in thresholds_to_try:
         # Apply this threshold to all similarity scores
         predictions = [apply_threshold(score, threshold) for score in similarity_scores]
         
-        f1 = f1_score(true_labels, predictions)
+        f1 = f1_score(true_labels, predictions,zero_division=0) #zero_division to prevent f1 score from crashing when there is extreme threshold
         
         if f1 > best_f1:
             best_f1 = f1
             best_threshold = threshold
     
-    return best_threshold
+    return best_threshold,best_f1
