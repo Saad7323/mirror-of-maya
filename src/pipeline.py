@@ -1,22 +1,20 @@
-from embedding.clip_encoder import get_embedding
-from similarity.similarity_metrics import cosine_similarity
+from src.embedding.clip_encoder import get_embedding
+from src.similarity.similarity_metrics import cosine_similarity
 
 threshold = 0.8
 
 def main():
-    img1_path = r"C:\Users\rkesh\Downloads\test1.jpg"
-    img2_path = r"C:\Users\rkesh\Downloads\test2.jpg"
-    
-    #Embedding
+    img1_path = "data/raw/original/img1.jpg"
+    img2_path = "data/raw/modified/img1_crop.jpg"
+
     emb1 = get_embedding(img1_path)
     emb2 = get_embedding(img2_path)
-    print("Embedding Shapes: ", emb1.shape,emb2.shape)
 
-    #Similarity
-    score = cosine_similarity(emb1,emb2)
-    print("Cosine Similarity: {score:.4f}")
+    print("Embedding Shapes:", emb1.shape, emb2.shape)
 
-    #Decision
+    score = cosine_similarity(emb1, emb2)
+    print(f"Cosine Similarity: {score:.4f}")
+
     if score >= threshold:
         print("NEAR DUPLICATE")
     else:
