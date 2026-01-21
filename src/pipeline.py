@@ -1,11 +1,11 @@
-from src.embedding.clip_encoder import get_embedding
-from src.embedding.phash_encoder import get_phash
-from src.similarity.similarity_metrics import cosine_similarity
+from embedding.clip_encoder import get_embedding
+from embedding.phash_encoder import get_phash
+from similarity.similarity_metrics import cosine_similarity
 
 phash_threshold = 5        # Hamming distance
 clip_threshold = 0.8       #cosine similarity
 
-def main():
+def test_pair(img1_path, img2_path):
     img1_path = "data/raw/original/img1.jpg"
     img2_path = "data/raw/modified/img1_crop.jpg"
 
@@ -15,7 +15,7 @@ def main():
     hamming_distance = phash1 - phash2
     print(f"pHash Hamming Distance: {hamming_distance}")
 
-    if hamming_distance > PHASH_THRESHOLD:
+    if hamming_distance > phash_threshold:
         print("NOT DUPLICATE (Rejected by pHash)")
         return
 
@@ -31,6 +31,17 @@ def main():
         print("NEAR DUPLICATE")
     else:
         print("NOT DUPLICATE")
+
+def main():
+    test_pair(
+        "data/raw/original/img1.jpg",
+        "data/raw/modified/img1_crop.jpg"
+    )
+
+    test_pair(
+        "data/raw/original/img2.jpg",
+        "data/raw/original/img3.jpg"
+    )
 
 if __name__ == "__main__":
     main()
