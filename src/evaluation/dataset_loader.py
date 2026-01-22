@@ -3,12 +3,8 @@ import os
 
 
 class ImagePairDataset:
-    def __init__(self, csv_path, root_dir):
-        """
-        csv_path: path to pairs.csv
-        root_dir: path to data/raw
-        """
-        self.root_dir = root_dir
+    def __init__(self, csv_path, root_dir): #csv_path: path to pairs.csv
+        self.root_dir = root_dir #root_dir: path to data/raw
         self.samples = []
 
         with open(csv_path, "r") as f:
