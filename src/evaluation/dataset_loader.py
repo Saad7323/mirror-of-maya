@@ -1,7 +1,5 @@
 import csv
 import os
-
-
 class ImagePairDataset:
     def __init__(self, csv_path, root_dir): #csv_path: path to pairs.csv
         
