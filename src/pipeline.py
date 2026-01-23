@@ -9,16 +9,16 @@ class DuplicateDetector:
         self.clip_threshold = clip_threshold
 
     def compare(self, img1_path, img2_path):
-        # Step 1: pHash filtering
+        # Step 1: p-Hash Filtering
         phash1 = get_phash(img1_path)
         phash2 = get_phash(img2_path)
 
         hamming_distance = phash1 - phash2
 
         if hamming_distance > self.phash_threshold:
-            return 0.0, False  # rejected early
+            return 0.0, False  # Rejected Early
 
-        # Step 2: CLIP similarity
+        # Step 2: CLIP Similarity
         emb1 = get_embedding(img1_path)
         emb2 = get_embedding(img2_path)
 
