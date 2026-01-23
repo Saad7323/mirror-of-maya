@@ -2,13 +2,7 @@ import numpy as np
 from sklearn.metrics import f1_score
 
 
-<<<<<<< HEAD
 def apply_threshold(similarity_score: float, threshold: float) -> int: #Converts a similarity score to a binary decision (0 or 1).
-=======
-def apply_threshold(similarity_score: float, threshold: float) -> int:
-
-#Converts a similarity score to a binary decision (0 or 1).
->>>>>>> b7299a3dd96c87d34fbd45248ecf5f18bb5a0aac
 
     if similarity_score >= threshold:
         return 1

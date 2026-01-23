@@ -12,11 +12,6 @@ def cosine_similarity(vec1: np.ndarray, vec2: np.ndarray) -> float: #to hint tha
     similarity = dot_product / (norm_vec1 * norm_vec2)
     return float(similarity)
 
-<<<<<<< HEAD
 #so cosine similarity is basically just to check how aligned the photos are, and the more the value of it
 #the more duplicate it is. As image embeddings are already vectors it will make it easier to compare between images.
 #NOTE: Cosine similarity is not similarity of size, its similarity of direction.
-=======
-#so cosine similarity is basically just to check how aligned the photos are, and the more the value of it the more duplicate it is. As image embeddings are already vectors it will make it easier to compare between images
-#NOTE: Cosine similarity is not similarity of size, its similarity of direction
->>>>>>> b7299a3dd96c87d34fbd45248ecf5f18bb5a0aac
