@@ -1,5 +1,5 @@
 from PIL import Image
-import imagehash
+import imagehash 
 
 def get_phash(image_path:str): #computes phash of image to a 64 bit perceptual hash
     image = Image.open(image_path).convert("RGB") 

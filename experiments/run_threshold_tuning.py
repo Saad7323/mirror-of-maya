@@ -7,8 +7,8 @@ from src.evaluation.metrics import compute_metrics
 def main():
     # Initialize detector (hybrid: pHash + CLIP)
     detector = DuplicateDetector(
-        phash_threshold=15,   # keep pHash fixed
-        clip_threshold=0.5    # dummy initial value (will be tuned)
+        phash_threshold=18,   # keep pHash fixed
+        clip_threshold=0.3    # dummy initial value (will be tuned)
     )
 
     # Load dataset

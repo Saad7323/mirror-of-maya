@@ -2,7 +2,13 @@ import numpy as np
 from sklearn.metrics import f1_score
 
 
+<<<<<<< HEAD
 def apply_threshold(similarity_score: float, threshold: float) -> int: #Converts a similarity score to a binary decision (0 or 1).
+=======
+def apply_threshold(similarity_score: float, threshold: float) -> int:
+
+#Converts a similarity score to a binary decision (0 or 1).
+>>>>>>> b7299a3dd96c87d34fbd45248ecf5f18bb5a0aac
 
     if similarity_score >= threshold:
         return 1
@@ -18,10 +24,10 @@ def find_optimal_threshold(similarity_scores, true_labels, step=0.01): #Finds th
     best_threshold = 0.0
     best_f1 = 0.0
     
-    thresholds_to_try = np.arange(0.5, 0.95 + step, step)#0.5 to 0.95 as thats where the cosine similarity values become meaningful for CLIP embeddings.
+    thresholds_to_try = np.arange(0.3, 0.9 + step, step)#0.5 to 0.95 as thats where the cosine similarity values become meaningful for CLIP embeddings.
     
-    for threshold in thresholds_to_try:
-        # Apply this threshold to all similarity scores
+    for threshold in thresholds_to_try: # Apply this threshold to all similarity scores
+        
         predictions = [apply_threshold(score, threshold) for score in similarity_scores]
         
         f1 = f1_score(true_labels, predictions,zero_division=0) #zero_division to prevent f1 score from crashing when there is extreme threshold
