@@ -15,11 +15,10 @@ mode = st.radio(
 
 st.markdown("---")
 
-st.sidebar.title("Offline Evaluation")
-st.sidebar.markdown("""
-**Model:** Hybrid (pHash + CLIP)  
-**Dataset:** 171 image pairs  
+st.sidebar.title("Offline Evaluation Results")
 
+st.sidebar.markdown("""
+**Dataset:** 171 image pairs  
 **pHash threshold:** 18  
 **CLIP threshold:** 0.30  
 
@@ -27,6 +26,19 @@ st.sidebar.markdown("""
 **Recall:** 0.798  
 **F1 Score:** 0.888  
 """)
+
+st.markdown("## Offline Evaluation Plots")
+
+st.image(
+    "results/f1_vs_threshold_hybrid.png",
+    caption="F1 Score vs CLIP Threshold (Hybrid Model)"
+)
+
+st.image(
+    "results/clip_vs_hybrid_f1.png",
+    caption="CLIP-only vs Hybrid F1 Comparison"
+)
+
 
 img1 = st.file_uploader("Upload First Image", type=["jpg", "png", "jpeg"])
 img2 = st.file_uploader("Upload Second Image", type=["jpg", "png", "jpeg"])
